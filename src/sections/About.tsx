@@ -109,7 +109,7 @@ const hobbies = [
 export const AboutSection = () => {
   const constraintRef = useRef(null);
   return (
-    <div className="py-20 lg:py-28">
+    <section id="about" className="pb-16 lg:py-24">
       <div className="container">
         <SectionHeader
           title={"A Glimpse Into My World"}
@@ -191,6 +191,6 @@ export const AboutSection = () => {
 
         </div>
       </div>
-    </div >
+    </section >
   );
 };
