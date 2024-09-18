@@ -121,7 +121,7 @@ export const HeroSection = () => {
           </div>
         </div>
         <div className='max-w-lg mx-auto'>
-          <h1 className='font-serif text-4xl md:text-6xl text-center mt-8 tracking-wide'>Hi, I'm Chuda Mani Kakarla</h1>
+          <h1 className='font-serif text-4xl md:text-6xl text-center mt-8 tracking-wide'>Hi, I&apos;m Chuda Mani Kakarla</h1>
           <p className='mt-4 text-center text-white/60 md:text-lg'>I’m an enthusiastic Computer Science student specializing in Web Development and DevOps, dedicated to crafting exceptional user experiences.</p>
         </div>
         <div className='flex flex-col md:flex-row justify-center items-center mt-8 gap-4'>
@@ -131,7 +131,7 @@ export const HeroSection = () => {
           </button>
           <button className='inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl'>
             <span>👋</span>
-            <span className='font-semibold'>Let's Connect </span>
+            <span className='font-semibold'>Let&apos;s Connect </span>
           </button>
         </div>
       </div>
