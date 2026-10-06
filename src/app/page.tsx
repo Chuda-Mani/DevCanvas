@@ -1,11 +1,12 @@
 import { AboutSection } from "@/sections/About";
+import { CertificationsSection } from "@/sections/Certifications";
 import { ContactSection } from "@/sections/Contact";
+import { ExperienceSection } from "@/sections/Experience";
 import { Footer } from "@/sections/Footer";
 import { Header } from "@/sections/Header";
 import { HeroSection } from "@/sections/Hero";
 import { ProjectsSection } from "@/sections/Projects";
 import { TapeSection } from "@/sections/Tape";
-import { TestimonialsSection } from "@/sections/Testimonials";
 
 
 export default function Home() {
@@ -13,9 +14,10 @@ export default function Home() {
     <div>
       <Header/>
       <HeroSection/>
+      <ExperienceSection/>
       <ProjectsSection/>
       <TapeSection/>
-      <TestimonialsSection/>
+      <CertificationsSection/>
       <AboutSection/>
       <ContactSection/>
       <Footer/>

@@ -24,11 +24,11 @@ export const Footer = () => {
   
     <div className="container">
       <div className="border-t border-white/15 py-6  flex flex-col items-center gap-8">
-        <div className="text-white/40">&copy; 2024. All rights reserved.</div>
+        <div className="text-white/40">&copy; {new Date().getFullYear()} Chuda Mani Kakarla. All rights reserved.</div>
         <div>
-          <nav className="flex flex-col items-center gap-8">
+          <nav className="flex flex-col md:flex-row items-center gap-8">
             {footerLinks.map(link => (
-              <a href={link.href} className="inline-flex items-center gap-1.5"
+              <a href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-white/70 hover:text-white transition duration-300"
                 key={link.title}
               >
                 <span className="font-semibold">{link.title}</span>

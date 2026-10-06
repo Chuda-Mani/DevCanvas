@@ -11,8 +11,8 @@ const calistoga = Calistoga({
 });
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "Created with the help of Frontend Tribe",
+  title: "Chuda Mani Kakarla | AI Intern at Emscale · Full-Stack & DevOps",
+  description: "Portfolio of Chuda Mani Kakarla, AI Intern at Emscale and developer specializing in full-stack development (React, Next.js, Spring Boot) and DevOps.",
 };
 
 export default function RootLayout({

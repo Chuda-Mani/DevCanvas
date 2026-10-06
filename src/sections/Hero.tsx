@@ -4,12 +4,14 @@ import grainImage from '@/assets/images/grain.jpg';
 import StarIcon from '@/assets/icons/star.svg';
 import SparkleIcon from '@/assets/icons/sparkle.svg';
 import { HeroOrbit } from '@/components/HeroOrbit';
-import Profile from "@/assets/images/profile2.png";
+import Profile from "@/assets/images/profile.jpg";
+import { Reveal } from '@/components/Reveal';
 
 export const HeroSection = () => {
   return (
-    <div className='py-32 md:py-48 lg:py-60 relative z-0 overflow-x-clip'>
-      <div className='absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_70%,transparent)]'>
+    <section id='home' className='py-32 md:py-48 lg:py-60 relative z-0 overflow-x-clip'>
+      {/* Decorative background: kept behind the content and ignored by clicks */}
+      <div aria-hidden="true" className='absolute inset-0 -z-10 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_70%,transparent)]'>
         <div className='absolute inset-0 -z-30 opacity-20' style={{ backgroundImage: `url(${grainImage.src})` }}></div>
         <div className='size-[620px] hero-ring'></div>
         <div className='size-[820px] hero-ring'></div>
@@ -105,36 +107,42 @@ export const HeroSection = () => {
       </div>
 
       <div className="container">
-        <div className='flex flex-col items-center relative'>
-          <div className='relative w-40 h-40 md:w-48 md:h-48 mb-4'>
-            <Image
-              src={Profile}
-              alt="Profile Picture"
-              className='object-cover w-full h-full rounded-full border-4 border-gradient-emerald shadow-lg transform transition-transform duration-500 ease-in-out animate-jump'
-            />
+        <Reveal className='flex flex-col items-center relative'>
+          {/* Gradient ring + glow; the bounce lives on the wrapper so the photo itself can be zoomed */}
+          <div className='group/photo relative size-40 md:size-52 mb-6 rounded-full p-1 bg-gradient-to-br from-emerald-300 to-sky-400 shadow-[0_0_60px_-10px] shadow-emerald-300/50 animate-jump'>
+            <div className='relative size-full rounded-full overflow-hidden bg-gray-800 ring-4 ring-gray-900'>
+              <Image
+                src={Profile}
+                alt="Chuda Mani Kakarla"
+                fill
+                priority
+                sizes="(min-width: 768px) 208px, 160px"
+                className='object-cover transition-transform duration-700 ease-out group-hover/photo:scale-105'
+              />
+            </div>
           </div>
           <div className='bg-gray-950 border border-gray-800 px-4 py-1.5 inline-flex items-center gap-4 rounded-lg'>
             <div className='bg-green-500 size-2.5 rounded-full relative'>
               <div className='bg-green-500 absolute inset-0 rounded-full animate-ping-large'></div>
             </div>
-            <div className='text-sm font-semibold'>Available for new projects</div>
+            <div className='text-sm font-semibold'>Currently working at Emscale</div>
           </div>
-        </div>
-        <div className='max-w-lg mx-auto'>
+        </Reveal>
+        <Reveal delay={0.15} className='max-w-lg mx-auto'>
           <h1 className='font-serif text-4xl md:text-6xl text-center mt-8 tracking-wide'>Hi, I&apos;m Chuda Mani Kakarla</h1>
-          <p className='mt-4 text-center text-white/60 md:text-lg'>I’m an enthusiastic Computer Science student specializing in Web Development and DevOps, dedicated to crafting exceptional user experiences.</p>
-        </div>
-        <div className='flex flex-col md:flex-row justify-center items-center mt-8 gap-4'>
-          <button className='inline-flex items-center gap-2 border-white/15 px-6 h-12 rounded-xl'>
-            <span className='font-semibold'>Explore My Work</span>
-            <ArrowDown className="size-4" />
-          </button>
-          <button className='inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl'>
+          <p className='mt-4 text-center text-white/60 md:text-lg'>AI Intern at Emscale and a full-stack + DevOps developer. I build full-stack products with React, Next.js and Spring Boot, and automate how they ship with Docker, Kubernetes, Jenkins and AWS.</p>
+        </Reveal>
+        <Reveal delay={0.3} className='flex flex-col md:flex-row justify-center items-center mt-8 gap-4'>
+          <a href="#projects" className='btn-secondary'>
+            <span>Explore My Work</span>
+            <ArrowDown className="size-4 icon-down" />
+          </a>
+          <a href="#contact" className='btn-primary'>
             <span>👋</span>
-            <span className='font-semibold'>Let&apos;s Connect </span>
-          </button>
-        </div>
+            <span>Let&apos;s Connect</span>
+          </a>
+        </Reveal>
       </div>
-    </div>
+    </section>
   );
 };

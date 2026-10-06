@@ -5,15 +5,14 @@ import { Card } from "@/components/Card";
 import StarIcon from "@/assets/icons/star.svg";
 import bookImage from "@/assets/images/book-cover.png";
 import Image from "next/image";
-import JavaScript from "@/assets/icons/square-js.svg"
-import HTML5 from "@/assets/icons/html5.svg"
-import CSS3 from "@/assets/icons/css3.svg"
-import React from "@/assets/icons/react.svg"
-import Java from "@/assets/icons/jva.svg"
-import Chrome from "@/assets/icons/chrome.svg"
-import GitHub from "@/assets/icons/github.svg"
-import MySQL from "@/assets/icons/mysql.svg"
-import { TechIcon } from "@/components/TechIcons";
+import { FaJava, FaAws } from "react-icons/fa";
+import { HiSparkles } from "react-icons/hi2";
+import { RiRobot2Line, RiPlugLine, RiVoiceprintLine, RiSearchEyeLine, RiFlowChart } from "react-icons/ri";
+import {
+  SiFastapi, SiPython, SiLangchain, SiOpenai, SiAnthropic, SiTypescript,
+  SiSpringboot, SiJavascript,
+  SiDocker, SiKubernetes, SiJenkins, SiGithub, SiMysql, SiPostgresql, SiMongodb,
+} from "react-icons/si";
 import mapImage from "@/assets/images/map2.png"
 import smileMemoji from "@/assets/images/memoji-smile.png"
 import { CardHeader } from "@/components/CardHeader";
@@ -21,43 +20,35 @@ import { ToolboxItems } from "@/components/ToolboxItems";
 import { motion } from 'framer-motion';
 import { useRef } from "react";
 
-const toolboxItems = [
-  {
-    title: 'JavaScript',
-    iconType: JavaScript,
-  },
-  {
-    title: 'HTML5',
-    iconType: HTML5,
-  },
-  {
-    title: 'CSS3',
-    iconType: CSS3,
-  },
-  {
-    title: 'React.js',
-    iconType: React,
-  },
-  // {
-  //   title: 'Next.js',
-  //   icon:,
-  // },
-  // {
-  //   title: 'Java',
-  //   icon: <Java />,
-  // },
-  {
-    title: 'Chrome',
-    iconType: Chrome,
-  },
-  {
-    title: 'GitHub',
-    iconType: GitHub,
-  },
-  // {
-  //   title: 'MySQL',
-  //   icon: <MySQL />,
-  // },
+// Current focus (highlighted) first, then AI stack from Emscale work, then core languages
+const developmentTools = [
+  { title: 'Generative AI', iconType: HiSparkles, highlight: true },
+  { title: 'FastAPI', iconType: SiFastapi, highlight: true },
+  { title: 'AWS Bedrock', iconType: FaAws, highlight: true },
+  { title: 'Python', iconType: SiPython },
+  { title: 'LangChain', iconType: SiLangchain },
+  { title: 'LangGraph', iconType: RiFlowChart },
+  { title: 'AI Agents', iconType: RiRobot2Line },
+  { title: 'MCP', iconType: RiPlugLine },
+  { title: 'Sarvam AI', iconType: RiVoiceprintLine },
+  { title: 'OpenAI', iconType: SiOpenai },
+  { title: 'Claude API', iconType: SiAnthropic },
+  { title: 'SEO', iconType: RiSearchEyeLine },
+  { title: 'TypeScript', iconType: SiTypescript },
+  { title: 'Java', iconType: FaJava },
+  { title: 'Spring Boot', iconType: SiSpringboot },
+  { title: 'JavaScript', iconType: SiJavascript },
+];
+
+const devOpsTools = [
+  { title: 'Docker', iconType: SiDocker },
+  { title: 'Kubernetes', iconType: SiKubernetes },
+  { title: 'Jenkins', iconType: SiJenkins },
+  { title: 'GitHub', iconType: SiGithub },
+  { title: 'AWS', iconType: FaAws },
+  { title: 'MySQL', iconType: SiMysql },
+  { title: 'PostgreSQL', iconType: SiPostgresql },
+  { title: 'MongoDB', iconType: SiMongodb },
 ];
 
 const hobbies = [
@@ -109,7 +100,7 @@ const hobbies = [
 export const AboutSection = () => {
   const constraintRef = useRef(null);
   return (
-    <section id="about" className="pb-16 lg:py-24">
+    <section id="about" className="section">
       <div className="container">
         <SectionHeader
           title={"A Glimpse Into My World"}
@@ -133,24 +124,26 @@ export const AboutSection = () => {
               />
 
 
-              <ToolboxItems items={toolboxItems} className="" itemsWrapperClassName="animate-move-left [animation-duration:30s]" />
-              <ToolboxItems items={toolboxItems} className="mt-6 " itemsWrapperClassName="animate-move-right [animation-duration:30s]" />
+              <ToolboxItems items={developmentTools} itemsWrapperClassName="animate-move-left [animation-duration:50s]" />
+              <ToolboxItems items={devOpsTools} className="mt-6" itemsWrapperClassName="animate-move-right [animation-duration:30s]" />
 
             </Card>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-3 gap-8">
             <Card className="h-[320px] p-0 flex flex-col md:col-span-3 lg:col-span-2">
-              <CardHeader title={"Beyond the Code"} description={"Explore my interests and bobbies beyond the digital realm"} className="px-6 py-6" />
+              <CardHeader title={"Beyond the Code"} description={"Explore my interests and hobbies beyond the digital realm"} className="px-6 py-6" />
 
               <div className="relative flex-1" ref={constraintRef}>
                 {hobbies.map(hobby => (
                   <motion.div
-                    key={hobby.title} className="inline-flex items-center gap-2 px-6 bg-gradient-to-r from-emerald-300 to-sky-400 rounded-full py-1.5 absolute" style={{
+                    key={hobby.title} className="inline-flex items-center gap-2 px-6 bg-gradient-to-r from-emerald-300 to-sky-400 rounded-full py-1.5 absolute cursor-grab shadow-lg" style={{
                       left: hobby.left,
                       top: hobby.top,
                     }}
                     drag
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.95, cursor: "grabbing" }}
                     dragConstraints = {constraintRef}
                     >
                       
@@ -160,15 +153,8 @@ export const AboutSection = () => {
                 ))}
               </div>
             </Card>
-            {/* <Card className="h-[320px] p-0 relative">
-            <Image src={mapImage} alt="map" className="h-full w-full object-cover" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1 -translate-y-1">
-              <Image src={smileMemoji} alt="smiling memoji" />
-            </div>
-          </Card> */}
-
             <Card className="h-[320px] p-0 relative md:col-span-2 lg:col-span-1">
-              <Image src={mapImage} alt="map" className="h-full w-full object-cover object-center" />
+              <Image src={mapImage} alt="Map showing where I'm based" className="h-full w-full object-cover object-center" />
 
 
               <div
